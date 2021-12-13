@@ -14,15 +14,15 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'ClusterAgent'
 DESCRIPTION = 'My short description for my project.'
-URL = 'https://github.com/me/myproject'
-EMAIL = 'me@example.com'
-AUTHOR = 'Awesome Soul'
+URL = 'https://github.com/Mortimrr/ClusterAgent'
+EMAIL = 'lily2421@163.com'
+AUTHOR = 'Shuangshuang Li'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '2.0'
+VERSION = '3.5'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    # 'requests', 'maya', 'records',
+    'pandas', 'pymongo', 'Flask', 'logaugment', 'requests', 'threadpool'
 ]
 
 # What packages are optional?
@@ -105,11 +105,11 @@ setup(
     url=URL,
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     # If your package is a single module, use this instead of 'packages':
-    # py_modules=['mypackage'],
+    # py_modules=['cluster_agent'],
 
-    # entry_points={
-    #     'console_scripts': ['mycli=mymodule:cli'],
-    # },
+    entry_points={
+        'console_scripts': ['infra_http_service=infra_http_service:infra_http_service'],
+    },
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
