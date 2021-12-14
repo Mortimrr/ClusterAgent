@@ -13,7 +13,7 @@ from setuptools import find_packages, setup, Command
 
 # Package meta-data.
 NAME = 'ClusterAgent'
-DESCRIPTION = 'My short description for my project.'
+DESCRIPTION = 'Agent for cluster test.'
 URL = 'https://github.com/Mortimrr/ClusterAgent'
 EMAIL = 'lily2421@163.com'
 AUTHOR = 'Shuangshuang Li'
@@ -105,10 +105,10 @@ setup(
     url=URL,
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     # If your package is a single module, use this instead of 'packages':
-    # py_modules=['cluster_agent'],
+    py_modules=['cluster_agent'],
 
     entry_points={
-        'console_scripts': ['infra_http_service=infra_http_service:infra_http_service'],
+        'console_scripts': ['ClusterAgent=cluster_agent.infra_http_service:run'],
     },
     install_requires=REQUIRED,
     extras_require=EXTRAS,

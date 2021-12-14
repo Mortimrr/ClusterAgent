@@ -23,11 +23,14 @@ import logging
 import shutil
 import subprocess
 import os.path
+import sys
 import time
 from flask import Flask
 from flask import request, Response
 from flask import send_from_directory
 from flask import stream_with_context
+
+sys.path.append(os.path.join(os.path.dirname(__file__)))
 from task_excution import RestartSvf, PhaseTwoStepLog, PhaseScriptLog, CollectLog, StartMultiSvf, \
     RunScriptTest, ExecuteDeviceTask
 
@@ -364,14 +367,16 @@ def collect_2step_logs():
         return send_from_directory(request_file_path, filename=request_file_name, as_attachment=True)
 
 
-if __name__ == "__main__":
+def run():
+    """
+    Main function for this service
+    :return:
+    """
 
-    """
-    server running here
-    """
+    global base_code_path, base_code_path, test_type, db_name, db_type, app, ip_local_pc
 
     base_code_path = "C:\\shuang\\"
-    save_bin_path = None
+    base_code_path = None
     test_type = "common_test"  # DPI_test
     db_name = None
     db_type = "local"
@@ -415,3 +420,10 @@ if __name__ == "__main__":
     app.logger.info("Start the services")
     app.logger.info("Service version: {}".format(service_version))
     app.run(port=4999, host=ip_local_pc, threaded=True, debug=1)
+
+
+if __name__ == "__main__":
+    """
+    server running here
+    """
+    run()
